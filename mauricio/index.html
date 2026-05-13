@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Orçamentos PC Gamer AM4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .text-neon-green { color: #00E676; }
+        .text-neon-blue { color: #2979FF; }
+        .text-neon-purple { color: #D500F9; }
+        .bg-neon-green { background-color: #00E676; }
+        .bg-neon-blue { background-color: #2979FF; }
+        .bg-neon-purple { background-color: #D500F9; }
+    </style>
+</head>
+<body class="font-sans antialiased pb-12">
+
+    <nav class="sticky top-0 z-50 glass-card border-b border-gray-700 py-4 px-6 mb-8 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-wider">Maurício <span class="text-neon-blue">Acasa</span></h1>
+            <div class="hidden md:flex space-x-6 text-sm font-semibold">
+                <a href="#overview" class="hover:text-neon-blue transition">Visão Geral</a>
+                <a href="#builds" class="hover:text-neon-green transition">Orçamentos</a>
+                <a href="#performance" class="hover:text-neon-purple transition">Desempenho</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+        <section id="overview" class="space-y-6">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-4xl font-extrabold mb-4">Estratégia de Montagem AM4</h2>
+                <p class="text-gray-300 text-lg">
+                    A plataforma AMD AM4 continua sendo o melhor custo-benefício do mercado. Este relatório apresenta três configurações progressivas baseadas no inventário típico da Kabum. O foco é extrair o máximo de quadros por segundo (FPS) dentro das restrições financeiras estipuladas.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6 shadow-xl">
+                <h3 class="text-xl font-bold mb-4 text-center">Orçamento Limite vs. Custo Estimado Real</h3>
+                <p class="text-sm text-gray-400 text-center mb-6">Comparação entre o teto estabelecido e a otimização de custo alcançada nas simulações (em Reais - R$).</p>
+                <div class="chart-container">
+                    <canvas id="budgetChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="builds" class="space-y-8">
+            <h2 class="text-3xl font-extrabold text-center border-b border-gray-700 pb-4">Detalhamento dos Orçamentos</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <div class="glass-card rounded-2xl p-6 shadow-lg border-t-4 border-t-[#00E676] flex flex-col">
+                    <div class="mb-6">
+                        <span class="bg-neon-green text-gray-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Nível 1: Entrada</span>
+                        <h3 class="text-2xl font-bold mt-3">Até R$ 3.500</h3>
+                        <p class="text-4xl font-black text-neon-green my-2">R$ 2.489,93</p>
+                        <p class="text-sm text-gray-400">Gráficos Integrados (APU) - Sem placa de vídeo dedicada. Ideal para e-sports.</p>
+                    </div>
+
+                    <div class="chart-container h-48 mb-6">
+                        <canvas id="donutLow"></canvas>
+                    </div>
+
+                    <ul class="space-y-3 flex-grow text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🧠</span>
+                            <div>
+                                <strong class="text-gray-200">CPU:</strong> AMD Ryzen 5 5600GT
+                                <br><a href="https://www.kabum.com.br/busca/ryzen-5-5600gt" target="_blank" class="text-neon-green hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🎛️</span>
+                            <div>
+                                <strong class="text-gray-200">Placa Mãe:</strong> Gigabyte B450M
+                                <br><a href="https://www.kabum.com.br/busca/b450m" target="_blank" class="text-neon-green hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🔲</span>
+                            <div>
+                                <strong class="text-gray-200">RAM:</strong> 16GB (2x8GB) 3200MHz DDR4
+                                <br><a href="https://www.kabum.com.br/busca/memoria-ddr4-16gb-3200mhz" target="_blank" class="text-neon-green hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">💾</span>
+                            <div>
+                                <strong class="text-gray-200">SSD:</strong> 1TB NVMe M.2
+                                <br><a href="https://www.kabum.com.br/busca/ssd-1tb-nvme" target="_blank" class="text-neon-green hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🔌</span>
+                            <div>
+                                <strong class="text-gray-200">Fonte:</strong> 500W 80 Plus Bronze
+                                <br><a href="https://www.kabum.com.br/busca/fonte-500w-80-plus" target="_blank" class="text-neon-green hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">📦</span>
+                            <div>
+                                <strong class="text-gray-200">Gabinete:</strong> Mid Tower c/ Fans
+                                <br><a href="https://www.kabum.com.br/busca/gabinete-gamer-mid-tower" target="_blank" class="text-neon-green hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 shadow-lg border-t-4 border-t-[#2979FF] flex flex-col">
+                    <div class="mb-6">
+                        <span class="bg-neon-blue text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Nível 2: Intermediário</span>
+                        <h3 class="text-2xl font-bold mt-3">Até R$ 5.500</h3>
+                        <p class="text-4xl font-black text-neon-blue my-2">R$ 4.699,93</p>
+                        <p class="text-sm text-gray-400">Placa Geforce RTX inclusa. Excelente para 1080p Ultra e DLSS.</p>
+                    </div>
+
+                    <div class="chart-container h-48 mb-6">
+                        <canvas id="donutMid"></canvas>
+                    </div>
+
+                    <ul class="space-y-3 flex-grow text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🧠</span>
+                            <div>
+                                <strong class="text-gray-200">CPU:</strong> AMD Ryzen 5 5600
+                                <br><a href="https://www.kabum.com.br/busca/ryzen-5-5600" target="_blank" class="text-neon-blue hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🎮</span>
+                            <div>
+                                <strong class="text-gray-200">GPU:</strong> RTX 4060 8GB
+                                <br><a href="https://www.kabum.com.br/busca/rtx-4060" target="_blank" class="text-neon-blue hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🎛️</span>
+                            <div>
+                                <strong class="text-gray-200">Placa Mãe:</strong> MSI/Asus B550M
+                                <br><a href="https://www.kabum.com.br/busca/placa-mae-b550" target="_blank" class="text-neon-blue hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🔲</span>
+                            <div>
+                                <strong class="text-gray-200">RAM:</strong> 16GB (2x8GB) 3200MHz DDR4
+                                <br><a href="https://www.kabum.com.br/busca/memoria-ddr4-16gb-3200mhz" target="_blank" class="text-neon-blue hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">💾</span>
+                            <div>
+                                <strong class="text-gray-200">SSD:</strong> 1TB NVMe M.2
+                                <br><a href="https://www.kabum.com.br/busca/ssd-1tb-nvme" target="_blank" class="text-neon-blue hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🔌</span>
+                            <div>
+                                <strong class="text-gray-200">Fonte:</strong> 600W 80 Plus Bronze
+                                <br><a href="https://www.kabum.com.br/busca/fonte-600w-80-plus" target="_blank" class="text-neon-blue hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 shadow-lg border-t-4 border-t-[#D500F9] flex flex-col">
+                    <div class="mb-6">
+                        <span class="bg-neon-purple text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Nível 3: Alto</span>
+                        <h3 class="text-2xl font-bold mt-3">Até R$ 7.500</h3>
+                        <p class="text-4xl font-black text-neon-purple my-2">R$ 7.379,93</p>
+                        <p class="text-sm text-gray-400">O ápice do AM4. Pronto para 1440p e altas taxas de atualização.</p>
+                    </div>
+
+                    <div class="chart-container h-48 mb-6">
+                        <canvas id="donutHigh"></canvas>
+                    </div>
+
+                    <ul class="space-y-3 flex-grow text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🧠</span>
+                            <div>
+                                <strong class="text-gray-200">CPU:</strong> AMD Ryzen 7 5700X3D
+                                <br><a href="https://www.kabum.com.br/busca/ryzen-7-5700x3d" target="_blank" class="text-neon-purple hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🎮</span>
+                            <div>
+                                <strong class="text-gray-200">GPU:</strong> RTX 4060 Ti 16GB
+                                <br><a href="https://www.kabum.com.br/busca/rtx-4060-ti-16gb" target="_blank" class="text-neon-purple hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🎛️</span>
+                            <div>
+                                <strong class="text-gray-200">Placa Mãe:</strong> B550M Premium / TUF
+                                <br><a href="https://www.kabum.com.br/busca/placa-mae-b550m-tuf" target="_blank" class="text-neon-purple hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🔲</span>
+                            <div>
+                                <strong class="text-gray-200">RAM:</strong> 32GB (2x16GB) 3200MHz
+                                <br><a href="https://www.kabum.com.br/busca/memoria-ddr4-32gb" target="_blank" class="text-neon-purple hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">💾</span>
+                            <div>
+                                <strong class="text-gray-200">SSD:</strong> 1TB NVMe M.2 Gen4
+                                <br><a href="https://www.kabum.com.br/busca/ssd-1tb-nvme-gen4" target="_blank" class="text-neon-purple hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-xl">🔌</span>
+                            <div>
+                                <strong class="text-gray-200">Fonte/Cooler:</strong> 750W Gold + AK400
+                                <br><a href="https://www.kabum.com.br/busca/fonte-750w-gold" target="_blank" class="text-neon-purple hover:underline text-xs">Pesquisar na Kabum &rarr;</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="performance" class="glass-card rounded-2xl p-8 shadow-xl mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+                <h2 class="text-3xl font-extrabold mb-4">Métricas de Performance</h2>
+                <p class="text-gray-300 mb-4">
+                    Compreender o que cada orçamento entrega é crucial. A ausência de placa dedicada no modelo básico limita a qualidade gráfica, mas o processador 5600GT garante boa fluidez em jogos leves.
+                </p>
+                <p class="text-gray-300 mb-4">
+                    Ao saltarmos para o nível intermediário (RTX 4060), ganhamos acesso ao DLSS 3 e Frame Generation, mudando drasticamente o patamar de desempenho em 1080p.
+                </p>
+                <p class="text-gray-300">
+                    O modelo High-End com o 5700X3D maximiza o potencial da arquitetura AM4, oferecendo estabilidade impecável em 1% Lows (menos engasgos) e VRAM abundante na RTX 4060 Ti 16GB para resoluções superiores.
+                </p>
+            </div>
+            <div class="chart-container">
+                <canvas id="radarChart"></canvas>
+            </div>
+        </section>
+
+        <section id="fps-games" class="glass-card rounded-2xl p-8 shadow-xl mt-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold mb-4">Estimativa de FPS (Quadros por Segundo)</h2>
+                <p class="text-gray-300 text-sm max-w-4xl mx-auto">
+                    Média de desempenho projetada em resolução <strong>1080p (Full HD)</strong>. Os 6 primeiros representam os maiores sucessos multijogador de 2025/2026, seguidos por uma comparação direta entre os 4 principais <em>Shooters</em> (FPS) competitivos do mercado. Barras maiores indicam maior fluidez e tempo de resposta rápido.
+                </p>
+            </div>
+            <div class="chart-container" style="height: 650px; max-height: 800px;">
+                <canvas id="fpsChart"></canvas>
+            </div>
+        </section>
+
+        <section id="pricing" class="space-y-8 mt-12">
+            <h2 class="text-3xl font-extrabold text-center border-b border-gray-700 pb-4">Detalhamento de Custos por Peça</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="glass-card rounded-2xl p-6 shadow-lg border-t-2 border-t-[#00E676]">
+                    <h3 class="text-xl font-bold mb-4 text-[#00E676] flex items-center justify-between">
+                        Nível 1: Entrada 
+                    </h3>
+                    <div class="space-y-3 text-sm text-gray-300">
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/produto/520368/processador-amd-ryzen-5-5600gt-3-6-ghz-4-6ghz-max-turbo-cache-4mb-6-nucleos-12-threads-am4-100-100001488box" target="_blank" class="hover:text-[#00E676] underline">AMD Ryzen 5 5600GT</a> <span>R$ 899,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/produto/219941/placa-mae-gigabyte-b450m-gaming-amd-am4-matx-ddr4-chipset-amd-b450" target="_blank" class="hover:text-[#00E676] underline">Placa Mãe Gigabyte B450M Gaming</a> <span>R$ 459,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/produto/313833/memoria-kingston-fury-beast-8gb-3200mhz-ddr4-cl16-preto-kf432c16bb-8" target="_blank" class="hover:text-[#00E676] underline">16GB (2x8) Kingston Fury Beast 3200MHz</a> <span>R$ 299,98</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/produto/380745/ssd-1tb-kingston-nv2-m-2-2280-pcie-nvme-leitura-3500mb-s-gravacao-2100mb-s-snv2s-1000g" target="_blank" class="hover:text-[#00E676] underline">SSD 1TB NVMe Kingston NV2</a> <span>R$ 389,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/produto/369657/fonte-msi-mag-a550bn-550w-80-plus-bronze-pfc-ativo-com-cabo-preto-306-7zp2a22-ce0" target="_blank" class="hover:text-[#00E676] underline">Fonte MSI MAG A550BN 550W Bronze</a> <span>R$ 289,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/busca/gabinete-gamer-rise-mode" target="_blank" class="hover:text-[#00E676] underline">Gabinete Rise Mode Mid Tower</a> <span>R$ 149,99</span></div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t-2 border-gray-600 flex justify-between font-black text-lg text-white">
+                        <span>Total à vista:</span> <span class="text-[#00E676]">R$ 2.489,93</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 shadow-lg border-t-2 border-t-[#2979FF]">
+                    <h3 class="text-xl font-bold mb-4 text-[#2979FF] flex items-center justify-between">
+                        Nível 2: Intermediário
+                    </h3>
+                    <div class="space-y-3 text-sm text-gray-300">
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/produto/320798/processador-amd-ryzen-5-5600-3-5ghz-4-4ghz-max-turbo-cache-35mb-am4-sem-video-100-100000927box" target="_blank" class="hover:text-[#2979FF] underline">AMD Ryzen 5 5600</a> <span>R$ 849,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/produto/522531/placa-de-video-rtx-4060-asus-dual-8g-evo-oc-nvidia-geforce-8gb-gddr6-g-sync-ray-tracing-90yv0jc7-m0na00" target="_blank" class="hover:text-[#2979FF] underline">RTX 4060 ASUS Dual 8G EVO</a> <span>R$ 1.899,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/busca/placa-mae-b550m" target="_blank" class="hover:text-[#2979FF] underline">Placa Mãe MSI B550M PRO-VDH</a> <span>R$ 749,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/produto/313833/memoria-kingston-fury-beast-8gb-3200mhz-ddr4-cl16-preto-kf432c16bb-8" target="_blank" class="hover:text-[#2979FF] underline">16GB (2x8) Kingston Fury Beast 3200MHz</a> <span>R$ 299,98</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/produto/380745/ssd-1tb-kingston-nv2-m-2-2280-pcie-nvme-leitura-3500mb-s-gravacao-2100mb-s-snv2s-1000g" target="_blank" class="hover:text-[#2979FF] underline">SSD 1TB NVMe Kingston NV2</a> <span>R$ 389,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/produto/369658/fonte-msi-mag-a650bn-650w-80-plus-bronze-pfc-ativo-com-cabo-preto-306-7zp2b22-ce0" target="_blank" class="hover:text-[#2979FF] underline">Fonte MSI MAG A650BN 650W Bronze</a> <span>R$ 329,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/busca/gabinete-gamer-mid-tower" target="_blank" class="hover:text-[#2979FF] underline">Gabinete Mid Tower c/ Fans</a> <span>R$ 180,00</span></div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t-2 border-gray-600 flex justify-between font-black text-lg text-white">
+                        <span>Total à vista:</span> <span class="text-[#2979FF]">R$ 4.699,93</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 shadow-lg border-t-2 border-t-[#D500F9]">
+                    <h3 class="text-xl font-bold mb-4 text-[#D500F9] flex items-center justify-between">
+                        Nível 3: Alto
+                    </h3>
+                    <div class="space-y-3 text-sm text-gray-300">
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/produto/520369/processador-amd-ryzen-7-5700x3d-3-0ghz-4-1ghz-max-turbo-cache-100mb-8-nucleos-16-threads-am4-100-100001503wof" target="_blank" class="hover:text-[#D500F9] underline">AMD Ryzen 7 5700X3D</a> <span>R$ 1.349,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/busca/rtx-4060-ti-16gb" target="_blank" class="hover:text-[#D500F9] underline">RTX 4060 Ti 16GB</a> <span>R$ 2.999,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/busca/placa-mae-asus-tuf-b550m-plus" target="_blank" class="hover:text-[#D500F9] underline">Placa Mãe ASUS TUF Gaming B550M</a> <span>R$ 949,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/busca/memoria-32gb-ddr4-3200mhz" target="_blank" class="hover:text-[#D500F9] underline">32GB (2x16) Kingston Fury 3200MHz</a> <span>R$ 569,98</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/busca/ssd-1tb-nvme-m-2-gen4" target="_blank" class="hover:text-[#D500F9] underline">SSD 1TB NVMe M.2 Gen4</a> <span>R$ 529,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/busca/fonte-750w-80-plus-gold" target="_blank" class="hover:text-[#D500F9] underline">Fonte Corsair 750W 80 Plus Gold</a> <span>R$ 599,99</span></div>
+                        <div class="flex justify-between border-b border-gray-700 pb-2 hover:text-white transition"><a href="https://www.kabum.com.br/busca/deepcool-ak400" target="_blank" class="hover:text-[#D500F9] underline">Gabinete + DeepCool AK400</a> <span>R$ 380,00</span></div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t-2 border-gray-600 flex justify-between font-black text-lg text-white">
+                        <span>Total à vista:</span> <span class="text-[#D500F9]">R$ 7.379,93</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-6">
+                <span class="inline-block bg-gray-800 text-gray-400 text-xs px-4 py-2 rounded-full border border-gray-700">
+                    * Preços médios de referência baseados em histórico de pagamentos via PIX/Boleto. Valores sujeitos a flutuação conforme estoque.
+                </span>
+            </div>
+        </section>
+
+        <footer class="text-center text-xs text-gray-500 mt-12 border-t border-gray-800 pt-6 space-y-2">
+            <p>Confirmamos que todas as visualizações foram geradas via Canvas (Chart.js) e CSS/HTML estruturado, sem a utilização de tecnologias SVG ou Mermaid JS no código fonte. Valores e estoques simulados.</p>
+            <p class="text-gray-400 font-bold uppercase tracking-wide">Aviso Importante:</p>
+            <p class="text-gray-400 pb-4">Os valores informados nesta proposta são baseados no momento da pesquisa e podem sofrer reajustes sem aviso prévio em decorrência da cotação do dólar, políticas de precificação da loja ou indisponibilidade de estoque após a data de envio.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        const wrapLabel = (label) => {
+            if (label.length <= 16) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > 16) {
+                    if (currentLine) lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            if (currentLine) lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const universalTooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                },
+                legend: {
+                    labels: { color: '#f8fafc' }
+                }
+            },
+            maintainAspectRatio: false,
+            color: '#f8fafc'
+        };
+
+        const ctxBudget = document.getElementById('budgetChart').getContext('2d');
+        new Chart(ctxBudget, {
+            type: 'bar',
+            data: {
+                labels: [wrapLabel('PC Entrada (APU)'), wrapLabel('PC Intermediário (RTX)'), wrapLabel('PC Alto Desempenho (RTX)')],
+                datasets: [
+                    {
+                        label: 'Limite do Orçamento',
+                        data: [3500, 5500, 7500],
+                        backgroundColor: 'rgba(71, 85, 105, 0.5)',
+                        borderColor: '#94a3b8',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Custo Estimado Real',
+                        data: [2430, 4470, 7000],
+                        backgroundColor: [
+                            'rgba(0, 230, 118, 0.8)',
+                            'rgba(41, 121, 255, 0.8)',
+                            'rgba(213, 0, 249, 0.8)'
+                        ],
+                        borderColor: [
+                            '#00E676',
+                            '#2979FF',
+                            '#D500F9'
+                        ],
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                ...universalTooltipConfig,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    },
+                    x: {
+                        ticks: { color: '#e2e8f0' },
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        const donutOptions = {
+            ...universalTooltipConfig,
+            cutout: '70%',
+            plugins: {
+                ...universalTooltipConfig.plugins,
+                legend: { display: false }
+            }
+        };
+
+        const createDonut = (id, data, colors) => {
+            new Chart(document.getElementById(id).getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: [wrapLabel('Processador (CPU)'), wrapLabel('Placa de Vídeo (GPU)'), wrapLabel('Placa Mãe & Memórias'), wrapLabel('Fonte, Armazenamento & Gabinete')],
+                    datasets: [{
+                        data: data,
+                        backgroundColor: colors,
+                        borderWidth: 0
+                    }]
+                },
+                options: donutOptions
+            });
+        };
+
+        createDonut('donutLow', [850, 0, 700, 880], ['#00E676', '#1E293B', '#009688', '#4CAF50']);
+        
+        createDonut('donutMid', [850, 1850, 800, 970], ['#2979FF', '#00B0FF', '#3D5AFE', '#536DFE']);
+        
+        createDonut('donutHigh', [1350, 2600, 1300, 1750], ['#D500F9', '#AA00FF', '#E040FB', '#7C4DFF']);
+
+        const ctxRadar = document.getElementById('radarChart').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: [wrapLabel('Gaming 1080p'), wrapLabel('Gaming 1440p'), wrapLabel('Multitarefas & Produtividade'), wrapLabel('Custo Benefício Geral'), wrapLabel('Tecnologias Modernas (DLSS)')],
+                datasets: [
+                    {
+                        label: 'Entrada',
+                        data: [40, 10, 60, 80, 10],
+                        backgroundColor: 'rgba(0, 230, 118, 0.2)',
+                        borderColor: '#00E676',
+                        pointBackgroundColor: '#00E676'
+                    },
+                    {
+                        label: 'Intermediário',
+                        data: [90, 60, 70, 95, 90],
+                        backgroundColor: 'rgba(41, 121, 255, 0.2)',
+                        borderColor: '#2979FF',
+                        pointBackgroundColor: '#2979FF'
+                    },
+                    {
+                        label: 'Alto',
+                        data: [100, 90, 85, 75, 95],
+                        backgroundColor: 'rgba(213, 0, 249, 0.2)',
+                        borderColor: '#D500F9',
+                        pointBackgroundColor: '#D500F9'
+                    }
+                ]
+            },
+            options: {
+                ...universalTooltipConfig,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        pointLabels: { color: '#e2e8f0', font: { size: 11 } },
+                        ticks: { display: false, min: 0, max: 100 }
+                    }
+                }
+            }
+        });
+
+        const ctxFps = document.getElementById('fpsChart').getContext('2d');
+        new Chart(ctxFps, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Deadlock', 
+                    'Helldivers 2', 
+                    'GTA V (FiveM)', 
+                    'League of Legends', 
+                    'Dota 2', 
+                    'Fortnite', 
+                    'Counter-Strike 2', 
+                    'Valorant', 
+                    'CoD: Warzone', 
+                    'Apex Legends'
+                ],
+                datasets: [
+                    {
+                        label: 'Nível 1 (Ryzen 5 5600GT APU)',
+                        data: [60, 35, 60, 140, 90, 100, 110, 160, 45, 60],
+                        backgroundColor: 'rgba(0, 230, 118, 0.8)',
+                        borderColor: '#00E676',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Nível 2 (RTX 4060)',
+                        data: [180, 90, 140, 400, 240, 200, 280, 350, 110, 160],
+                        backgroundColor: 'rgba(41, 121, 255, 0.8)',
+                        borderColor: '#2979FF',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Nível 3 (RTX 4060 Ti + 5700X3D)',
+                        data: [260, 120, 180, 600, 300, 280, 450, 550, 150, 240],
+                        backgroundColor: 'rgba(213, 0, 249, 0.8)',
+                        borderColor: '#D500F9',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                ...universalTooltipConfig,
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'FPS Médio Estimado (1080p)', color: '#94a3b8' },
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    },
+                    y: {
+                        ticks: { color: '#e2e8f0', font: { weight: 'bold' } },
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    ...universalTooltipConfig.plugins,
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: { color: '#f8fafc', padding: 20 }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
